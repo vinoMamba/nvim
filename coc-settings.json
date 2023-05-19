@@ -1,0 +1,33 @@
+ "coc.preferences.extensionUpdateCheck": "daily",
+  "suggest.noselect": true,
+  "suggest.enablePreselect": false,
+
+  "explorer.position":"right",
+  "explorer.width": 30,
+  "explorer.quitOnOpen": true,
+  "explorer.sources": [
+		{
+			"name": "buffer",
+			"expand": false
+		},
+		{
+			"name": "file",
+			"expand": true
+		}
+	],
+	"explorer.file.column.indent.indentLine": true,
+	"explorer.file.showHiddenFiles": true,
+	"explorer.buffer.showHiddenBuffers": false,
+	"explorer.keyMappings.global": {},
+  "languageserver": {
+    "golang": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"filetypes": ["go"],
+			"initializationOptions": {
+				"gocodeCompletionEnabled": true,
+				"diagnosticsEnabled": true,
+				"lintTool": "golint"
+			}
+		}
+  }
