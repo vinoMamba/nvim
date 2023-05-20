@@ -2,7 +2,6 @@
 " line number
 set number
 set relativenumber
-
 " tabs & indentation
 set tabstop=2
 set shiftwidth=2
@@ -25,7 +24,7 @@ set cursorline
 set wildmenu
 
 " scrolloff
-set scrolloff=5
+set scrolloff=10
 
 " 尝试去兼容 vi 编辑器的行为
 set nocompatible
@@ -50,21 +49,12 @@ set encoding=utf-8
 set backspace=indent,eol,start
 
 " 设置折叠方式
-set foldmethod=indent
+set foldmethod=manual
 
 " -----------------keymaps----------------- 
 
 let mapleader=" "
 
-" 初学者必备，禁止方向键行为，强迫使用 h j k l
-inoremap <Up> <nop>
-nnoremap <Up> <nop>
-inoremap <Down> <nop>
-nnoremap <Down> <nop>
-inoremap <Left> <nop>
-nnoremap <Left> <nop>
-inoremap <Right> <nop>
-nnoremap <Right> <nop>
 " 设置  jk 为退出 insert 模式
 inoremap jk <Esc>
 "禁止 ctrl + c
@@ -121,44 +111,29 @@ Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 
-"fzf
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'run': 'make' }
 " coc
+"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-call plug#end()
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
+call plug#end()
 
 " nightfly
 colorscheme nightfly
 
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " ==================== coc.nvim ====================
-let g:coc_global_extensions = [
-	\ 'coc-css',
-	\ 'coc-diagnostic',
-	\ 'coc-eslint',
-	\ 'coc-explorer',
-	\ 'coc-gitignore',
-  \ 'coc-go',
-	\ 'coc-html',
-	\ 'coc-import-cost',
-	\ 'coc-json',
-	\ 'coc-snippets',
-	\ 'coc-syntax',
-	\ 'coc-tasks',
-	\ 'coc-tsserver',
-	\ 'coc-vetur',
-	\ 'coc-vimlsp',
-	\ 'coc-yaml',
-	\ 'coc-yank']
+let g:coc_global_extensions = ["coc-json","coc-vimlsp","coc-tsserver"]
+set updatetime=100
+set signcolumn=yes
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
@@ -166,64 +141,64 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
+
+" trigger completion
 inoremap <silent><expr> <c-o> coc#refresh()
-function! Show_documentation()
-	call CocActionAsync('highlight')
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
-endfunction
-nnoremap <LEADER>h :call Show_documentation()<CR>
-" set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
-" let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
-" let $NVIM_COC_LOG_LEVEL = 'debug'
-" let $NVIM_COC_LOG_FILE = '/Users/david/Desktop/log.txt'
 
-nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
-nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
-nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
-nnoremap <c-c> :CocCommand<CR>
-" Text Objects
-xmap kf <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap kf <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-xmap kc <Plug>(coc-classobj-i)
-omap kc <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-" Useful commands
-nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+" Use `LEADER [` and `LEADER ]` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nnoremap <silent> <LEADER>d :CocList diagnostics
+nmap <silent> <LEADER>[ <Plug>(coc-diagnostic-prev)
+nmap <silent> <LEADER>] <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-nmap tt :CocCommand explorer<CR>
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>aw  <Plug>(coc-codeaction-selected)
 
-noremap <silent> <leader>ts :CocList tasks<CR>
-" coc-snippets
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-e>'
-let g:coc_snippet_prev = '<c-n>'
-imap <C-e> <Plug>(coc-snippets-expand-jump)
-autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+" Use LEADER k to show documentation in preview window
+nnoremap <silent> <LEADER>k :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = { 
+    "css",
+    "dockerfile",
+    "javascript",
+    "json",
+    "typescript",
+    "tsx",
+    "go"
+    },
+	highlight = {
+		enable = true,  
+    additional_vim_regex_highlighting = false,
+	},
+}
+EOF
+
+
