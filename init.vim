@@ -107,6 +107,7 @@ noremap sj :set splitbelow<CR>:split<CR>
 " 插件
 call plug#begin('~/.vim/plugged')
 
+Plug 'github/copilot.vim'
 Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
@@ -126,7 +127,20 @@ colorscheme nightfly
 
 
 " ==================== coc.nvim ====================
-let g:coc_global_extensions = ["coc-json","coc-vimlsp","coc-tsserver"]
+let g:coc_global_extensions = [
+      \"coc-html",
+      \"coc-emmet",
+      \"coc-json",
+      \"coc-vimlsp",
+      \"coc-tsserver",
+      \"coc-eslint",
+      \"coc-css",
+      \"coc-cssmodules",
+      \"coc-diagnostic",
+      \"coc-go",
+      \"@yaegassy/coc-volar",
+      \"coc-unocss",
+      \"coc-snippets"]
 set updatetime=100
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate
@@ -178,15 +192,25 @@ endfunction
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
-
 " Formatting selected code
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" coc-snippets
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-e> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-e>'
+let g:coc_snippet_prev = '<c-n>'
+imap <C-e> <Plug>(coc-snippets-expand-jump)
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = { 
     "css",
+    "scss",
+    "html",
+    "vue",
     "dockerfile",
     "javascript",
     "json",

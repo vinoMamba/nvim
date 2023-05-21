@@ -1,6 +1,12 @@
 {
   "coc.preferences.extensionUpdateCheck": "daily",
-  "languageserver": {
-  },
+  "codeLens.enable": true,
+  "languageserver": {},
   "coc.preferences.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "pnpm",
+  "snippets.extends": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  }
 }
