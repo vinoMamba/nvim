@@ -127,20 +127,18 @@ colorscheme nightfly
 
 
 " ==================== coc.nvim ====================
-let g:coc_global_extensions = [
+ let g:coc_global_extensions = [
       \"coc-html",
-      \"coc-emmet",
       \"coc-json",
       \"coc-vimlsp",
-      \"coc-tsserver",
-      \"coc-eslint",
-      \"coc-css",
-      \"coc-cssmodules",
       \"coc-diagnostic",
       \"coc-go",
-      \"@yaegassy/coc-volar",
-      \"coc-unocss",
-      \"coc-snippets"]
+      \"coc-tsserver",
+      \"coc-eslint",
+      \"coc-emmet",
+      \"coc-css",
+      \"coc-cssmodules",
+      \"coc-explorer"]
 set updatetime=100
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate
@@ -203,6 +201,9 @@ let g:coc_snippet_next = '<c-e>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+
+"coc-explorer
+:nmap <M-1> <Cmd>CocCommand explorer<CR>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {

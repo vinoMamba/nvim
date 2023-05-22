@@ -8,5 +8,13 @@
   "snippets.extends": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false,
+  "explorer.position": "right",
+  "explorer.quitOnOpen": true,
+  "explorer.file.column.indent.indentLine": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.git.showIgnored": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.buffer.showHiddenBuffers": false
 }
