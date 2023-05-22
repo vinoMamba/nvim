@@ -138,7 +138,8 @@ colorscheme nightfly
       \"coc-emmet",
       \"coc-css",
       \"coc-cssmodules",
-      \"coc-explorer"]
+      \"coc-explorer",
+      \"coc-snippets"]
 set updatetime=100
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate
@@ -204,6 +205,8 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 "coc-explorer
 :nmap <M-1> <Cmd>CocCommand explorer<CR>
+
+
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
