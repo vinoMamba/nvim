@@ -120,6 +120,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
+" lazygit 
+Plug 'kdheepak/lazygit.nvim'
 call plug#end()
 
 " nightfly
@@ -229,4 +231,10 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+"------------------ lazygit ------------------ 
+noremap <c-g> :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
+let g:lazygit_floating_window_border_chars = ['╭', '╮', '╰', '╯'] "
+let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
