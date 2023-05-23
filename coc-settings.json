@@ -15,7 +15,10 @@
   "snippets.extends": {
     "typescriptreact": [
       "typescript"
-    ]
+    ],
+    "vue": [
+      "typescript"
+    ],
   },
   "snippets.ultisnips.directories": [
     "$HOME/.config/nvim/ultisnips/",
