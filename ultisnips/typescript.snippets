@@ -34,6 +34,12 @@ snippet f "Arrow Function"
 }
 endsnippet
 
+snippet fn "Description" b
+function ${1:fn}(){
+	${0}
+}
+endsnippet
+
 snippet af "Async Function"
 async function ${1:FunctionName}() {
 	${0}
@@ -69,6 +75,21 @@ endsnippet
 
 snippet c "Comment Block"
 /*
- * ${0}
+* ${0}
 */
+endsnippet
+
+snippet ec "export const" b
+export const ${1:a} = ${0}
+endsnippet
+
+
+snippet ei "export interface" b
+export interface ${1:A} {
+	${0}
+}
+endsnippet
+
+snippet et "export type" b
+export type ${1:A} = ${0}
 endsnippet
