@@ -122,6 +122,10 @@ Plug 'nvim-treesitter/playground'
 
 " lazygit 
 Plug 'kdheepak/lazygit.nvim'
+
+"  telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 call plug#end()
 
 " nightfly
@@ -237,4 +241,10 @@ let g:lazygit_floating_window_winblend = 0 " transparency of floating window
 let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
 let g:lazygit_floating_window_border_chars = ['╭', '╮', '╰', '╯'] "
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+
+" ------------------ telescope ------------------ 
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
