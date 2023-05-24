@@ -126,6 +126,9 @@ Plug 'kdheepak/lazygit.nvim'
 "  telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+" comment
+Plug 'tomtom/tcomment_vim'
+
 call plug#end()
 
 " nightfly
