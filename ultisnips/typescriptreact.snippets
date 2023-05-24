@@ -37,3 +37,16 @@ endsnippet
 snippet cn "className"
 className="$1"
 endsnippet
+
+snippet  "v3" b
+import {defineComponent} from "vue";
+
+export const ${1:Comp}= defineComponent({
+  name: '${1}',
+  setup() {
+    return () => (
+      <div>${1}</div>
+    )
+  }
+})
+endsnippet
