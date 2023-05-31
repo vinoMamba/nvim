@@ -148,7 +148,8 @@ colorscheme nightfly
       \"coc-css",
       \"coc-cssmodules",
       \"coc-explorer",
-      \"coc-snippets"]
+      \"coc-snippets",
+      \"coc-unocss"]
 set updatetime=100
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate
