@@ -229,7 +229,8 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "typescript",
     "tsx",
-    "go"
+    "go",
+    "sql"
     },
 	highlight = {
 		enable = true,  
