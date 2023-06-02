@@ -93,3 +93,14 @@ endsnippet
 snippet et "export type" b
 export type ${1:A} = ${0}
 endsnippet
+
+
+snippet pinia "create pinia" b
+import {defineStore} from "pinia";
+
+export const  ${1}= defineStore('${0}', () => {
+
+  return {
+  }
+})
+endsnippet
