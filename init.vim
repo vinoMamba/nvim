@@ -107,6 +107,8 @@ noremap sj :set splitbelow<CR>:split<CR>
 " 插件
 call plug#begin('~/.vim/plugged')
 
+Plug 'itchyny/vim-cursorword'
+
 Plug 'github/copilot.vim'
 Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 Plug 'tpope/vim-surround'
@@ -126,13 +128,22 @@ Plug 'kdheepak/lazygit.nvim'
 "  telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+
 " comment
 Plug 'tomtom/tcomment_vim'
 
+Plug 'theniceboy/nvim-deus'
+
 call plug#end()
 
-" nightfly
-colorscheme nightfly
+" deus
+set termguicolors " enable true colors support
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+silent! color deus
+
+hi NonText ctermfg=gray guifg=grey10
+
+
 
 
 " ==================== coc.nvim ====================
