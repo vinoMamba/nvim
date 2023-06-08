@@ -139,7 +139,7 @@ Plug 'theniceboy/joshuto.nvim'
 call plug#end()
 
 " joshuto
-map JO :Joshuto<CR>
+map <LEADER>j :Joshuto<CR>
 
 " deus
 set termguicolors " enable true colors support
