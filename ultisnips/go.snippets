@@ -29,3 +29,31 @@ if err != nil {
 }
 endsnippet
 
+snippet  curd "controller crud" b
+package controller
+
+import "github.com/gin-gonic/gin"
+
+type  ${0} struct{}
+
+func (ctrl *${0}) Create(c *gin.Context) {
+	panic("not implemented") //TODO: Implement
+}
+
+func (ctrl *${0}) Destory(c *gin.Context) {
+	panic("not implemented") //TODO: Implement
+}
+
+func (ctrl *${0}) Update(c *gin.Context) {
+	panic("not implemented") //TODO: Implement
+}
+
+func (ctrl *${0}) Get(c *gin.Context) {
+	panic("not implemented") //TODO: Implement
+}
+
+func (ctrl *${0}) GetPaged(c *gin.Context) {
+	panic("not implemented") //TODO: Implement
+}
+
+endsnippet
