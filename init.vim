@@ -165,7 +165,8 @@ hi NonText ctermfg=gray guifg=grey10
       \"coc-cssmodules",
       \"coc-explorer",
       \"coc-snippets",
-      \"coc-unocss"]
+      \"coc-unocss",
+      \"@yaegassy/coc-volar"]
 set updatetime=100
 set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate
