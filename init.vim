@@ -136,7 +136,14 @@ Plug 'theniceboy/nvim-deus'
 
 Plug 'theniceboy/joshuto.nvim'
 
+Plug 'windwp/nvim-autopairs'
+
 call plug#end()
+
+
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
 
 " joshuto
 map <LEADER>j :Joshuto<CR>
